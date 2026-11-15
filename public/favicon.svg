@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Rounded charcoal background matching the pub's styling -->
+  <rect width="32" height="32" rx="6" fill="#1A1A1A"/>
+  
+  <!-- Stylized industrial 'S' from the Støyperiet logo, filled with rust-color -->
+  <path d="M.05,23.8h12.57l-1.21-5.8L0,14.18-.3,2.1,1.57,0h11.56l.81,5.01H1.11l1.31,5.06,11.31,3.99.3,12.49-1.26,2.22H.91L.05,23.8Z" fill="#C46E52" transform="translate(9, 1.6)"/>
+</svg>

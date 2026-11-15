@@ -1,0 +1,7 @@
+# Innstillingar for Netlify. Netlify les denne fila automatisk.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"

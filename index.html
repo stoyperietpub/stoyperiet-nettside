@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="nn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Støyperiet Pub - Ein folkepub på Husnes</title>
+    <meta name="description" content="Velkomen til Støyperiet Pub på Husnes! Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap. Utforsk vår drikkemeny, program og vår unike atmosfære.">
+    <meta name="keywords" content="Støyperiet, Pub, Husnes, Folkepub, Kvinnherad, Dugnad, Øl, Kultur, Konsert, Uteliv">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stoyperietpub.no/">
+    <meta property="og:title" content="Støyperiet Pub - Ein folkepub på Husnes">
+    <meta property="og:description" content="Sjå programmet og drikkemenyen vår. Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap på Husnes.">
+    <meta property="og:image" content="https://stoyperietpub.no/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://stoyperietpub.no/">
+    <meta property="twitter:title" content="Støyperiet Pub - Ein folkepub på Husnes">
+    <meta property="twitter:description" content="Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap på Husnes.">
+    
+    <link rel="canonical" href="https://stoyperietpub.no/">
+    <link rel="icon" href="https://lh3.googleusercontent.com/d/1qHTR8dht5GX6_CxYOCa9VHvXXxsj6fwS">
+
+    <!-- Structured Data (Schema.org) for AEO/AI Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarOrPub",
+      "name": "Støyperiet Pub",
+      "image": "https://stoyperietpub.no/logo.png",
+      "@id": "https://stoyperietpub.no",
+      "url": "https://stoyperietpub.no",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sentrumsvegen 41",
+        "addressLocality": "Husnes",
+        "postalCode": "5460",
+        "addressCountry": "NO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.8583,
+        "longitude": 5.7514
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Wednesday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "12:00",
+          "closes": "00:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61588258673482",
+        "https://www.instagram.com/stoyperietpub/"
+      ],
+      "description": "Støyperiet er ein unik folkepub på Husnes i Kvinnherad, bygd på dugnad av over 100 eldsjeler. Ein samlingsplass for musikk, kultur og lokalmiljøet."
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/qsi0urb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-paper: #D9D2C9;
+            --color-rust: #C46E52;
+            --color-steel: #8C949D;
+            --color-charcoal: #1A1A1A;
+        }
+        body {
+            background-color: var(--color-paper);
+            color: var(--color-charcoal);
+            font-family: "cartograph-mono", monospace;
+            background-image: radial-gradient(var(--color-charcoal) 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+            background-attachment: fixed;
+            line-height: 1.5;
+        }
+        .font-heading {
+            font-family: "pressato-variable", sans-serif;
+            font-variation-settings: 'wdth' 130, 'wght' 400, 'slnt' 150;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        .font-mono {
+            font-family: "cartograph-mono", monospace;
+            letter-spacing: 0.05em;
+        }
+        button, .btn {
+            font-family: "cartograph-mono", monospace;
+            font-weight: 700;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.12;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            mix-blend-mode: multiply;
+        }
+        /* Risograph Overprint Effect */
+        .riso-text {
+            position: relative;
+            display: inline-block;
+        }
+        .riso-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            color: var(--color-rust);
+            opacity: 0.5;
+            mix-blend-mode: multiply;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .section-divider {
+            border-top: 1px solid rgba(26, 26, 26, 0.1);
+        }
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Custom selection */
+        ::selection {
+            background-color: var(--color-rust);
+            color: white;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="antialiased overflow-x-hidden">
+    <div class="grain-overlay"></div>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
