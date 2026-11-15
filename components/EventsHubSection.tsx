@@ -28,7 +28,6 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { useSeason } from '../seasonConfig';
-import SantaHat from './SantaHat';
 
 export type UnifiedEventType = 'program' | 'micro';
 
@@ -1306,16 +1305,6 @@ const EventsHubSection: React.FC = () => {
           
           {/* LEFT: Calendar Grid (7 cols on desktop) */}
           <div className="lg:col-span-7 bg-[#242424] border-2 border-white/10 p-4 sm:p-7 shadow-2xl relative">
-            {/* Julenissehatt på øvre høgre hjørne av kalenderen */}
-            {isChristmas && (
-              <div 
-                className="absolute -top-6 -right-3 sm:-top-8 sm:-right-5 md:-top-10 md:-right-6 z-20 pointer-events-none select-none transition-transform"
-                title="God jul frå Støyperiet!"
-              >
-                <SantaHat className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20" />
-              </div>
-            )}
-            
             {/* Month Navigator Header */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-5 border-b border-white/10">
               <div className="flex items-center gap-3">
