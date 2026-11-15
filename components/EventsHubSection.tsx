@@ -459,8 +459,9 @@ function getLastDayOfWeek(year: number, month: number, dayOfWeek: number): numbe
 function calculateLonnstreff(year: number, month: number): number {
   // In November 2026: Mannsdagsquiz is on Friday Nov 20, so Lønningstreff is moved to Saturday Nov 21
   if (year === 2026 && month === 10) return 21;
-  // In December 2026: Moondance concert is on Friday Dec 11, so Lønningstreff is on Friday Dec 4
-  if (year === 2026 && month === 11) return 4;
+  // In December 2026 every Friday is taken (juleshow 4, Moondance 11, mingling 18, førstejuledagskviss 25),
+  // so Lønningstreff is on Saturday Dec 12
+  if (year === 2026 && month === 11) return 12;
 
   // Alternates between closest to 12th and 20th each month.
   // Human calendar: Odd months (Jan=1, Mar=3, Mai=5, Jul=7, Sep=9, Nov=11) -> target 20.
@@ -492,7 +493,11 @@ export const MICRO_EVENT_RULES: MicroEventRule[] = [
     price: 'Gratis',
     description: 'Ta med strikketøyet eller handarbeidet ditt og slå deg ned saman med andre handarbeidsglade. Kaffi, drøs og uformell søndagsstemning.',
     badgeColor: '#C46E52',
-    calculateDate: (year, month) => getNthDayOfWeek(year, month, 0, 1)
+    calculateDate: (year, month) => {
+      // In December 2026, Sunday 6th is the juleshow extra show, so Strikkekafé is moved to Sunday 20th
+      if (year === 2026 && month === 11) return 20;
+      return getNthDayOfWeek(year, month, 0, 1);
+    }
   },
   {
     id: 'dartkveld',
@@ -504,7 +509,11 @@ export const MICRO_EVENT_RULES: MicroEventRule[] = [
     price: 'Gratis',
     description: 'Uformell dartkveld for både ferske og erfarne kastarar. Bli med på miniturnering, lær tips og triks, eller berre kast nokre piler i hyggeleg lag.',
     badgeColor: '#8C949D',
-    calculateDate: (year, month) => getNthDayOfWeek(year, month, 3, 1)
+    calculateDate: (year, month) => {
+      // In December 2026, Wednesday 2nd is the juleshow, so Dartkveld is moved to Wednesday 9th
+      if (year === 2026 && month === 11) return 9;
+      return getNthDayOfWeek(year, month, 3, 1);
+    }
   },
   {
     id: 'sjakksondag',
