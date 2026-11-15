@@ -64,8 +64,6 @@ export interface MicroEventRule {
   description: string;
   badgeColor: string;
   calculateDate: (year: number, month: number) => number | null;
-  /** Kan visast same dag som eit programarrangement (t.d. tidleg mingling før kveldskonsert) */
-  allowSameDayAsProgram?: boolean;
 }
 
 export interface UnifiedCalendarEvent {
@@ -546,10 +544,11 @@ export const MICRO_EVENT_RULES: MicroEventRule[] = [
     price: 'Gratis',
     description: 'Uformelt treff for lokalt næringsliv, etablerarar, tilsette og nysgjerrige. Knyt nye kontaktar, diskuter idear og gå inn i helga inspirert.',
     badgeColor: '#8C949D',
-    allowSameDayAsProgram: true,
     calculateDate: (year, month) => {
       // In October 2026, Friday 30th is dedicated to Pubkor, so mingling is on Friday 23rd
       if (year === 2026 && month === 9) return 23;
+      // In November 2026, Friday 27th is the Torill Aurora Band concert, so mingling is moved to Saturday 28th
+      if (year === 2026 && month === 10) return 28;
       // In December 2026, Friday 25th is dedicated to Førstejuledagskviss, so mingling is moved to Friday 18th
       if (year === 2026 && month === 11) return 18;
       return getLastDayOfWeek(year, month, 5);
@@ -720,7 +719,7 @@ const EventsHubSection: React.FC = () => {
       if (day !== null) {
         // Enforce pub rule: Never 2 events at the same time / on the same day.
         // Program events take precedence over recurring micro-events.
-        if (!rule.allowSameDayAsProgram && events.some(e => e.day === day)) {
+        if (events.some(e => e.day === day)) {
           return;
         }
         events.push({
