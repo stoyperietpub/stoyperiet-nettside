@@ -144,6 +144,15 @@ const Footer: React.FC = () => {
         </div>
 
 
+        {isChristmas && (
+          <div className="border-t border-white/5 pt-10 pb-8 text-center">
+            <p className="font-heading text-3xl md:text-5xl uppercase text-[#C46E52] tracking-tight">God jul frå Støyperiet</p>
+            <p className="font-mono text-sm md:text-base text-[#D9D2C9]/80 mt-3">
+              Me ses att 6. januar, utkvilte og litt rundare.
+            </p>
+          </div>
+        )}
+
         <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-[10px] uppercase tracking-widest opacity-40">
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-left">
             <span>© 2026 STØYPERIET PUB // HUSNES_NORWAY</span>
