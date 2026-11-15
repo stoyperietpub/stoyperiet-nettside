@@ -10,9 +10,13 @@ import QuizSection from './components/QuizSection';
 import JobSection from './components/JobSection';
 import Footer from './components/Footer';
 import ChristmasOverlay from './components/ChristmasOverlay';
+import JuleprogramSection from './components/JuleprogramSection';
+import ScrollEffects from './components/ScrollEffects';
+import { useSeason } from './seasonConfig';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const { isChristmas } = useSeason();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200);
@@ -35,16 +39,22 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen selection:bg-[#C46E52] selection:text-white relative">
       <ChristmasOverlay />
+      <ScrollEffects />
       <Header />
       <main>
         <Hero />
+        <JuleprogramSection />
         <JobSection />
-        <Marquee text="109 ELDSJELER • LOKAL DUGNAD • STØYPERIET • 20+ ETTER KL. 19:00 • GODT SELSKAP • MUSIKK •" />
+        <Marquee christmas={isChristmas} text={isChristmas
+          ? "JULESHOW • MOONDANCE • ALLSONGBINGO • FØRSTEJULEDAGSKVISS • STENGT 24. – ME ÒG HAR FAMILIE •"
+          : "109 ELDSJELER • LOKAL DUGNAD • STØYPERIET • 20+ ETTER KL. 19:00 • GODT SELSKAP • MUSIKK •"} />
         <DugnadSection />
         <PubInfoList />
         <EventsHubSection />
         <QuizSection />
-        <Marquee text="KRAFT • TRADISJON • STØYPERIET • BRYGGEVART • ELDSJELER • GOD SNACKS • KULTUR •" reverse />
+        <Marquee christmas={isChristmas} text={isChristmas
+          ? "GOD JUL • FELLESSKAP I FLYTANDE FORM • VARMT INNE, VÅTT UTE • GODT NYTT ÅR • STØYPERIET •"
+          : "KRAFT • TRADISJON • STØYPERIET • BRYGGEVART • ELDSJELER • GOD SNACKS • KULTUR •"} reverse />
       </main>
       <Footer />
     </div>

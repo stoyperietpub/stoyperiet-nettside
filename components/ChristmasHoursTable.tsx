@@ -28,9 +28,6 @@ export const ChristmasHoursTable: React.FC<ChristmasHoursTableProps> = ({
     <div className={`w-full max-w-3xl font-sans text-[#1A1A1A] ${className}`}>
       {showTitle && (
         <div className="mb-6 flex items-baseline gap-2.5">
-          <span className="font-serif text-2xl sm:text-3xl text-[#C46E52] font-normal tracking-tight select-none">
-            02
-          </span>
           <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A] tracking-tight">
             Opningstider i jula
           </h2>

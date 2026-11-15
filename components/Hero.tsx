@@ -56,37 +56,22 @@ const Hero: React.FC = () => {
           </h1>
         </div>
 
-        {/* Stillingsutlysing Callout Banner */}
-        <div className="mb-8 w-full max-w-xl">
-          <a 
+        {/* Stillingsutlysing – diskret lenkje */}
+        <div className="mb-10">
+          <a
             href="#stilling"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById('stilling')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="group block border-2 border-[#1A1A1A] bg-[#C46E52] text-white p-3.5 sm:p-4 text-left transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_#1A1A1A] shadow-[4px_4px_0px_#1A1A1A] cursor-pointer"
+            className="group inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-[#1A1A1A]/25 hover:border-[#1A1A1A] bg-[#F4EBD9]/40 hover:bg-[#F4EBD9]/70 px-4 py-2 font-mono text-[11px] sm:text-xs text-[#1A1A1A] uppercase tracking-wider transition-colors cursor-pointer"
             title="Gå til stillingsutlysing for dagleg leiar"
           >
-            <div className="flex items-center justify-between gap-3 font-mono">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#1A1A1A] text-white text-[10px] sm:text-xs font-bold px-2 py-0.5 uppercase tracking-wider">
-                  LEDIG STILLING
-                </span>
-                <span className="text-[11px] sm:text-xs text-[#F4EBD9] font-bold uppercase tracking-wider">
-                  Frist: 25. nov
-                </span>
-              </div>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                <span>LES MEIR</span>
-                <span>→</span>
-              </span>
-            </div>
-            <div className="mt-2 font-heading text-xl sm:text-2xl text-black uppercase tracking-tight leading-snug">
-              Støyperiet søkjer dagleg leiar (20 %)
-            </div>
-            <div className="mt-1 font-mono text-xs text-[#F4EBD9]/90 italic">
-              «Ansvarleg på papiret. Støttespelar i praksis.»
-            </div>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C46E52] shrink-0"></span>
+            <span className="font-bold">Me søkjer dagleg leiar (20 %)</span>
+            <span className="hidden sm:inline text-[#1A1A1A]/50">·</span>
+            <span className="text-[#1A1A1A]/70">Frist 25. nov</span>
+            <span className="text-[#C46E52] font-bold group-hover:translate-x-0.5 transition-transform">Les meir →</span>
           </a>
         </div>
 

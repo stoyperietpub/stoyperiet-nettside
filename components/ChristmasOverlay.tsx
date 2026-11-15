@@ -375,7 +375,7 @@ export const ChristmasOverlay: React.FC = () => {
       </div>
 
       {/* 3. ENKEL FAST KNAPP NEDE TIL HØGRE: "Opningstider i jula" */}
-      <div className="fixed bottom-5 right-5 z-[120] flex flex-col items-end gap-2 pointer-events-auto">
+      <div className="fixed bottom-5 right-5 z-[120] hidden lg:flex flex-col items-end gap-2 pointer-events-auto">
         {isPreview && (
           <button
             onClick={() => togglePreview(false)}
@@ -427,7 +427,7 @@ export const ChristmasOverlay: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C46E52]"></span>
                 20+ etter kl. 19:00 på opningskveldar
               </span>
-              <span>Vanlege opningstider startar att 4. januar</span>
+              <span>Vanlege opningstider startar att onsdag 6. januar</span>
             </div>
           </div>
         </div>
