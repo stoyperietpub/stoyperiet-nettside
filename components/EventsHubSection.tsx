@@ -41,7 +41,7 @@ export interface EventItem {
   doorsOpen?: string;
   title: string;
   description: string;
-  status: 'Gratis' | 'Billett' | 'Uavklart' | 'Utsolgt' | 'Utselt';
+  status: 'Gratis' | 'Billett' | 'Uavklart' | 'Utsolgt' | 'Utselt' | 'Utseld';
   registrationLink?: string;
   buttonLabel?: string;
   vippsNumber?: string;
@@ -64,6 +64,8 @@ export interface MicroEventRule {
   description: string;
   badgeColor: string;
   calculateDate: (year: number, month: number) => number | null;
+  /** Kan visast same dag som eit programarrangement (t.d. tidleg mingling før kveldskonsert) */
+  allowSameDayAsProgram?: boolean;
 }
 
 export interface UnifiedCalendarEvent {
@@ -74,7 +76,7 @@ export interface UnifiedCalendarEvent {
   time: string;
   doorsOpen: string;
   price?: string;
-  status?: 'Gratis' | 'Billett' | 'Uavklart' | 'Utsolgt' | 'Utselt';
+  status?: 'Gratis' | 'Billett' | 'Uavklart' | 'Utsolgt' | 'Utselt' | 'Utseld';
   registrationLink?: string;
   buttonLabel?: string;
   registrationNote?: string;
@@ -296,21 +298,37 @@ export const INITIAL_PROGRAM_EVENTS: EventItem[] = [
     time: "20:00 - 21:00",
     doorsOpen: "12:00",
     title: "KULTURELT KNASK PÅ EIN ONSDAG",
-    description: "Anders Totland tar med trøorgelet og ein kremgjeng med gode folk som bidrar med litt av kvart frå scenen, og alt er heilt gratis (bortsett frå det du kjøper i baren).",
+    description: "Anders Totland tar med trøorgelet og ein kremgjeng med gode folk som bidrar med litt av kvart frå scenen, og alt er heilt gratis (bortsett frå det du kjøper i baren).\n\nMed Anders Totland (trøorgel), Rune Eikemo, Nils Trygve Markhus, Trond Thorsen, Ståle Eskeland, Karianne Solheim og Arne Torget.",
     status: "Gratis",
     category: "Kultur & Litteratur"
   },
   {
     id: 'mannsdagsquiz-2026',
     startDate: '2026-11-20T18:30:00',
-    endDate: '2026-11-20T22:00:00',
+    endDate: '2026-11-20T20:30:00',
     dateDisplay: "20. NOVEMBER",
-    time: "18:30",
+    time: "18:30–20:30",
     doorsOpen: "12:00",
-    title: "MANNSDAGSQUIZ",
-    description: "Menn toppar statistikken for sjølvmord, rus og utanforskap i Noreg. Psykisk uhelse og einsemd blir ofte peika på som ein del av grunnen. Ein kviss løyser ikkje det. Men ein kveld der det er lett å kome, lett å bli sitjande og lett å prate, er ein god start. Difor inviterer LO Kvinnherad og Støyperiet til kvisspub og gode samtalar fredag 20. november.",
+    title: "MANNSDAGSKVISS",
+    description: "Menn toppar statistikken for sjølvmord, rus og utanforskap i Noreg. Psykisk uhelse og einsemd blir ofte peika på som ein del av grunnen. Ein kviss løyser ikkje det. Men ein kveld der det er lett å kome, lett å bli sitjande og lett å prate, er ein god start. Difor inviterer LO Kvinnherad og Støyperiet til kvisspub og gode samtalar fredag 20. november.\n\nTa med deg venner, kjentfolk og kollegaer. Eller kom åleine, så finn me eit lag til deg. Påmeldinga stengjer fredag 20. november kl. 10:00.",
     status: "Gratis",
-    category: "Konkurranse & Quiz"
+    registrationLink: "https://event.checkin.no/234741/lo-kvinnherad-arrangerer-mannsdagskviss-pa-stoyperiet",
+    buttonLabel: "Meld deg på (Checkin)",
+    category: "Konkurranse & Kviss"
+  },
+  {
+    id: 'torill-aurora-band-2026',
+    startDate: '2026-11-27T20:00:00',
+    endDate: '2026-11-27T23:59:59',
+    dateDisplay: "27. NOVEMBER",
+    time: "20:00",
+    doorsOpen: "12:00",
+    title: "TORILL AURORA BAND",
+    description: "I regi av Husnes Jazzklubb. Fredag 27. november kjem Torill Aurora Band til folkepuben Støyperiet på Husnes. Trass i sin unge alder har Torill Aurora lang fartstid innan mange ulike musikkgenre som jazz, rock, blues, country og mykje anna.\n\nBillettar: ordinær 300,-, medlemmar 200,-, student 100,-. Kjøp billett via Vipps til 12838. Hiv deg rundt før det blir utselt!",
+    status: "Billett",
+    vippsNumber: "12838",
+    price: "kr 300 / 200 / 100",
+    category: "Konsert & Jazz"
   },
   {
     id: 'juletradisjonar-ons-2026',
@@ -320,12 +338,12 @@ export const INITIAL_PROGRAM_EVENTS: EventItem[] = [
     time: "18:30",
     doorsOpen: "17:30",
     title: "JULETRADISJONAR OG ANDRE LIDELSAR..",
-    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! Sjå Hoopla for billettar.",
-    status: "Billett",
+    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! Denne framsyninga er utseld. Det er framleis billettar til fredag kl. 18:30 og ekstrashowa søndag 6. desember.",
+    status: "Utseld",
     registrationLink: "https://stoyperiet.hoopla.no/event/67317976",
-    buttonLabel: "Kjøp billett på Hoopla",
+    buttonLabel: "Sjå ledige billettar på Hoopla",
     category: "Juleshow & Humor",
-    price: "kr 425,-"
+    price: "kr 455,-"
   },
   {
     id: 'juletradisjonar-fre-2026',
@@ -335,12 +353,12 @@ export const INITIAL_PROGRAM_EVENTS: EventItem[] = [
     time: "18:30 & 20:30",
     doorsOpen: "17:30",
     title: "JULETRADISJONAR OG ANDRE LIDELSAR..",
-    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! To framsyningar kl. 18:30 og 20:30. Sjå Hoopla for billettar.",
+    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! To framsyningar: kl. 18:30 (ledige billettar) og kl. 20:30 (utseld).",
     status: "Billett",
     registrationLink: "https://stoyperiet.hoopla.no/event/67317976",
     buttonLabel: "Kjøp billett på Hoopla",
     category: "Juleshow & Humor",
-    price: "kr 425,-"
+    price: "kr 455,-"
   },
   {
     id: 'juletradisjonar-lau-2026',
@@ -350,26 +368,41 @@ export const INITIAL_PROGRAM_EVENTS: EventItem[] = [
     time: "20:30",
     doorsOpen: "19:30",
     title: "JULETRADISJONAR OG ANDRE LIDELSAR..",
-    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! Sjå Hoopla for billettar.",
+    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! Denne framsyninga er utseld. Det er framleis billettar til fredag kl. 18:30 og ekstrashowa søndag 6. desember.",
+    status: "Utseld",
+    registrationLink: "https://stoyperiet.hoopla.no/event/67317976",
+    buttonLabel: "Sjå ledige billettar på Hoopla",
+    category: "Juleshow & Humor",
+    price: "kr 455,-"
+  },
+  {
+    id: 'juletradisjonar-son-2026',
+    startDate: '2026-12-06T17:30:00',
+    endDate: '2026-12-06T22:00:00',
+    dateDisplay: "06. DESEMBER",
+    time: "17:30 & 20:00",
+    title: "JULETRADISJONAR OG ANDRE LIDELSAR..",
+    description: "Ein førjulskveld med latter, allsong og uhøgtidleg humor med Anne Kathrin, Karianne og Nils'n! Ekstrashow! To nye framsyningar søndag 6. desember kl. 17:30 og 20:00.",
     status: "Billett",
     registrationLink: "https://stoyperiet.hoopla.no/event/67317976",
     buttonLabel: "Kjøp billett på Hoopla",
     category: "Juleshow & Humor",
-    price: "kr 425,-"
+    price: "kr 455,-"
   },
   {
     id: 'moondance-2026',
-    startDate: '2026-12-11T20:00:00',
+    startDate: '2026-12-11T19:00:00',
     endDate: '2026-12-11T23:59:59',
     dateDisplay: "11. DESEMBER",
-    time: "20:00",
+    time: "19:00",
     doorsOpen: "12:00",
     title: "KONSERT MED MOONDANCE",
-    description: "Moondance kjem for å ringa inn jula på Støyperiet fredag 11. desember!",
+    description: "Seks erfarne musikarar frå Kvinnherad tek med seg låtar du kan, låtar du trur du ikkje kan, og ein liten pose juleklassikarar. På repertoaret står mellom anna Van Morrison, Bob Dylan, Amy Winehouse, Cher, Johnny Cash og Tom Jones.\n\nBandet er Håkon Røstbø (gitar/vokal), Ingrid og Astrid Fjellandsbø Røstbø (vokal), Ole Bjarte Røssland (trommer), Kjartan Hansen (bass) og Hallgeir Tvedten (keyboard). Allsong er frivillig, men erfaringsmessig vanskeleg å la vere.",
     status: "Billett",
     registrationLink: "https://moondance.hoopla.no/event/1862730922",
     buttonLabel: "Kjøp billett på Hoopla",
-    category: "Konsert & Musikk"
+    category: "Konsert & Musikk",
+    price: "kr 275,-"
   },
   {
     id: 'allsongbingo-2026',
@@ -513,6 +546,7 @@ export const MICRO_EVENT_RULES: MicroEventRule[] = [
     price: 'Gratis',
     description: 'Uformelt treff for lokalt næringsliv, etablerarar, tilsette og nysgjerrige. Knyt nye kontaktar, diskuter idear og gå inn i helga inspirert.',
     badgeColor: '#8C949D',
+    allowSameDayAsProgram: true,
     calculateDate: (year, month) => {
       // In October 2026, Friday 30th is dedicated to Pubkor, so mingling is on Friday 23rd
       if (year === 2026 && month === 9) return 23;
@@ -581,6 +615,7 @@ export const renderEventIcon = (eventId: string, className = "w-4 h-4") => {
     case 'the-real-thing-2026':
     case 'the-real-things-2026':
     case 'moondance-2026':
+    case 'torill-aurora-band-2026':
     case 'allsongbingo-2026':
     case 'pubkor-2026':
     case 'dansn-2026':
@@ -589,6 +624,7 @@ export const renderEventIcon = (eventId: string, className = "w-4 h-4") => {
     case 'juletradisjonar-ons-2026':
     case 'juletradisjonar-fre-2026':
     case 'juletradisjonar-lau-2026':
+    case 'juletradisjonar-son-2026':
     case 'juletradisjonar-2026':
       return <Sparkles className={className} />;
     case 'hurtigsjakk-2026':
@@ -684,7 +720,7 @@ const EventsHubSection: React.FC = () => {
       if (day !== null) {
         // Enforce pub rule: Never 2 events at the same time / on the same day.
         // Program events take precedence over recurring micro-events.
-        if (events.some(e => e.day === day)) {
+        if (!rule.allowSameDayAsProgram && events.some(e => e.day === day)) {
           return;
         }
         events.push({
@@ -699,7 +735,9 @@ const EventsHubSection: React.FC = () => {
           registrationLink: rule.id === 'kviss'
             ? (year === 2026 && month === 9
                 ? 'https://event.checkin.no/231733/quiz-pa-stoyperiet-onsdag-28-oktober'
-                : 'https://event.checkin.no/233631/quiz-pa-stoyperiet-onsdag-25-november')
+                : year === 2026 && month === 10
+                ? 'https://event.checkin.no/233631/quiz-pa-stoyperiet-onsdag-25-november'
+                : undefined)
             : rule.registrationLink,
           registrationNote: rule.registrationNote,
           description: rule.description,
@@ -1079,7 +1117,7 @@ const EventsHubSection: React.FC = () => {
                     ? 'bg-emerald-950 text-emerald-300 border-emerald-500/30'
                     : activeEvent.status === 'Billett'
                     ? 'bg-[#C46E52]/20 text-[#E3A08B] border-[#C46E52]'
-                    : activeEvent.status === 'Utsolgt' || activeEvent.status === 'Utselt'
+                    : activeEvent.status === 'Utsolgt' || activeEvent.status === 'Utselt' || activeEvent.status === 'Utseld'
                     ? 'bg-red-950 text-red-300 border-red-500/30'
                     : 'bg-amber-950 text-amber-300 border-amber-500/30'
                 }`}>
