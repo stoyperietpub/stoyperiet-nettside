@@ -218,7 +218,6 @@ export function buildJsonLd(now: Date) {
     '@id': PUB_ID,
     name: 'Støyperiet',
     alternateName: ['Støyperiet Pub', 'Støyperiet folkepub', 'Støyperiet Husnes'],
-    slogan: 'Fellesskap i flytande form',
     description: DESCRIPTION,
     url: `${SITE}/`,
     email: EMAIL,
@@ -326,7 +325,7 @@ export function buildLlmsTxt(now: Date): string {
   const lines: string[] = [
     '# Støyperiet',
     '',
-    `> ${DESCRIPTION} Slagord: «Fellesskap i flytande form».`,
+    `> ${DESCRIPTION}`,
     '',
     'Støyperiet er ein folkepub: eigd av lokalsamfunnet, bygd på dugnad og driven av frivillige. ' +
       'Visjonen er «å vere ein trygg og lett tilgjengeleg møteplass for vaksne, og skape kultur og fellesskap på Husnes». ' +
@@ -397,7 +396,6 @@ export function buildStaticHtml(now: Date): string {
       <div id="seo-fallback" style="max-width:46rem;margin:0 auto;padding:3rem 1.5rem;font-family:monospace;color:#1A1A1A;">
         <h1>Støyperiet – folkepub på Husnes</h1>
         <p>${esc(DESCRIPTION)}</p>
-        <p><em>Fellesskap i flytande form.</em></p>
         <h2>Opningstider</h2>
         <p>${WEEKLY_HOURS.map((h) => esc(h.text)).join('. ')}. 20 års aldersgrense etter kl. 19.</p>
         <h2>Adresse</h2>
