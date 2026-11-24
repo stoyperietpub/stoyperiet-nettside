@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Støyperiet Pub - Ein folkepub på Husnes</title>
-    <meta name="description" content="Velkomen til Støyperiet Pub på Husnes! Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap. Utforsk vår drikkemeny, program og vår unike atmosfære.">
-    <meta name="keywords" content="Støyperiet, Pub, Husnes, Folkepub, Kvinnherad, Dugnad, Øl, Kultur, Konsert, Uteliv">
+    <meta name="description" content="Velkomen til Støyperiet Pub på Husnes! Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap. Sjå programmet med konsertar, kviss, standup og faste kveldar.">
+    <meta name="keywords" content="Støyperiet, Pub, Husnes, Folkepub, Kvinnherad, Sunnhordland, Hardanger, Dugnad, Kultur, Konsert, Kviss, Standup, Kva skjer">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stoyperietpub.no/">
     <meta property="og:title" content="Støyperiet Pub - Ein folkepub på Husnes">
-    <meta property="og:description" content="Sjå programmet og drikkemenyen vår. Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap på Husnes.">
+    <meta property="og:description" content="Sjå programmet vårt. Ein unik samlingsplass bygd på dugnad, lidenskap og sterkt fellesskap på Husnes.">
     <meta property="og:image" content="https://stoyperietpub.no/og-image.png">
 
     <!-- Twitter -->
@@ -23,55 +23,13 @@
     
     <link rel="canonical" href="https://stoyperietpub.no/">
     <link rel="icon" href="https://lh3.googleusercontent.com/d/1qHTR8dht5GX6_CxYOCa9VHvXXxsj6fwS">
+    <meta property="og:locale" content="nn_NO">
+    <meta property="og:site_name" content="Støyperiet">
+    <meta property="twitter:image" content="https://stoyperietpub.no/og-image.png">
 
-    <!-- Structured Data (Schema.org) for AEO/AI Optimization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BarOrPub",
-      "name": "Støyperiet Pub",
-      "image": "https://stoyperietpub.no/logo.png",
-      "@id": "https://stoyperietpub.no",
-      "url": "https://stoyperietpub.no",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Sentrumsvegen 41",
-        "addressLocality": "Husnes",
-        "postalCode": "5460",
-        "addressCountry": "NO"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 59.8583,
-        "longitude": 5.7514
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Wednesday",
-            "Sunday"
-          ],
-          "opens": "12:00",
-          "closes": "22:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Friday",
-            "Saturday"
-          ],
-          "opens": "12:00",
-          "closes": "00:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61588258673482",
-        "https://www.instagram.com/stoyperietpub/"
-      ],
-      "description": "Støyperiet er ein unik folkepub på Husnes i Kvinnherad, bygd på dugnad av over 100 eldsjeler. Ein samlingsplass for musikk, kultur og lokalmiljøet."
-    }
-    </script>
+    <!-- Strukturerte data (schema.org) blir lagde automatisk frå programmet ved bygging: sjå seo/generate.ts -->
+    <!--SEO_JSONLD-->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Støyperiet for KI-assistentar (llms.txt)">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://use.typekit.net/qsi0urb.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -156,7 +114,7 @@
 </head>
 <body class="antialiased overflow-x-hidden">
     <div class="grain-overlay"></div>
-    <div id="root"></div>
+    <div id="root"><!--SEO_STATIC--></div>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
