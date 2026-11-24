@@ -468,6 +468,8 @@ export const MICRO_EVENT_RULES: MicroEventRule[] = [
     calculateDate: (year, month) => {
       // In December 2026, Sunday 6th is the juleshow extra show, so Strikkekafé is moved to Sunday 20th
       if (year === 2026 && month === 11) return 20;
+      // In January 2027 the pub is closed 1–3 January, so no Strikkekafé that month
+      if (year === 2027 && month === 0) return null;
       return getNthDayOfWeek(year, month, 0, 1);
     }
   },
