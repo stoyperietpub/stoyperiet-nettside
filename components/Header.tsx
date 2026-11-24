@@ -118,7 +118,12 @@ const Header: React.FC = () => {
       </header>
 
       {/* Fullskjerm Meny */}
-      <div className={`fixed inset-0 bg-[#D9D2C9] z-[90] transition-all duration-700 ease-in-out flex flex-col items-center justify-start overflow-y-auto pt-32 pb-12 ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+      {/* Menyen ligg alltid på sitt eige lag (will-change), elles kan Safari «miste» han
+          når animasjonen er ferdig, slik at han blinkar fram og forsvinn igjen. */}
+      <div
+        aria-hidden={!isOpen}
+        className={`fixed inset-0 bg-[#D9D2C9] z-[90] isolate will-change-[transform,opacity] transform-gpu [backface-visibility:hidden] transition-[transform,opacity,visibility] duration-700 ease-in-out flex flex-col items-center justify-start overflow-y-auto pt-32 pb-12 ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible pointer-events-none'}`}
+      >
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(black 2px, transparent 2px)', backgroundSize: '48px 48px' }}></div>
         
         <nav className="relative z-10 flex flex-col items-center gap-6 md:gap-8 w-full">
